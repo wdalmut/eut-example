@@ -1,0 +1,15 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - 4000:3000
+    volumes:
+      - .:/data
+    working_dir: /data
+    command: ./node_modules/.bin/forever -w . index.js
+  db:
+    image: mysql:5.7.21
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
